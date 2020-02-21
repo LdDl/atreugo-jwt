@@ -509,14 +509,15 @@ func (mw *AtreugoJWTMiddleware) signedString(token *jwt.Token) (string, error) {
 // RefreshHandler can be used to refresh a token. The token still needs to be valid on refresh.
 // Shall be put under an endpoint that is using the AtreugoJWTMiddleware.
 // Reply will be of the form {"token": "TOKEN"}.
-func (mw *AtreugoJWTMiddleware) RefreshHandler(c *atreugo.RequestCtx) {
+func (mw *AtreugoJWTMiddleware) RefreshHandler(c *atreugo.RequestCtx) error {
 	tokenString, expire, err := mw.RefreshToken(c)
 	if err != nil {
 		mw.unauthorized(c, http.StatusUnauthorized, mw.HTTPStatusMessageFunc(err, c))
-		return
+		return nil
 	}
 
 	mw.RefreshResponse(c, http.StatusOK, tokenString, expire)
+	return nil
 }
 
 // RefreshToken refresh token and check if token is expired
