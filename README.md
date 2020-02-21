@@ -26,7 +26,7 @@ import "github.com/LdDl/atreugo-jwt"
 
 Please see [the example file](example/main.go)
 ```bash
-go run example/server.go
+go run example/main.go
 ```
 Demo server will start on port 8080.
 
