@@ -19,7 +19,9 @@ go get github.com/LdDl/atreugo-jwt
 Import it in your code:
 
 ```go
-import "github.com/LdDl/atreugo-jwt"
+import (
+    jwt "github.com/LdDl/atreugo-jwt"
+)
 ```
 
 ## Example
